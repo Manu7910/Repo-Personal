@@ -77,20 +77,20 @@ data LineaDeDefensa = UnaLineaDeDefensa {
 }
 
 linea1 = LineaDeDefensa {
-	plantas = [sunflower, sunflower, sunflower],
-	zombies = []
+ plantas = [sunflower, sunflower, sunflower],
+ zombies = []
 }
 linea2 = LineaDeDefensa {
-	plantas = [peaShooter, peaShooter, sunflower, nut],
-	zombies = [zombieBase, newspaperZombie]
+ plantas = [peaShooter, peaShooter, sunflower, nut],
+ zombies = [zombieBase, newspaperZombie]
 }
 linea3 = LineaDeDefensa {
-	plantas = [sunflower, peaShooter],
-	zombies = [gargantuar, zombieBase, zombieBase]
+ plantas = [sunflower, peaShooter],
+ zombies = [gargantuar, zombieBase, zombieBase]
 }
 linea4 = LineaDeDefensa {
-	plantas = [peaShooter],
-	zombies = [zombieBase]
+ plantas = [peaShooter],
+ zombies = [zombieBase]
 }
 
 agregarPlanta :: LineaDeDefensa -> Planta -> LineaDeDefensa
