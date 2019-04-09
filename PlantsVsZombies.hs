@@ -1,3 +1,4 @@
+--1a)
 data Planta = UnaPlanta {
  ptosDevida :: Int,
  solesProducidos :: Int, 
@@ -20,10 +21,52 @@ sunflower = UnaPlanta {
  ptosDevida = 7,
  solesProducidos = 1,
  poderDeAtaque = 0
+} 
+--1b) 
+data Zombie = UnZombie {
+ nombre :: String,
+ accesorios :: [String],
+ danioPorMordida :: Int,
+ nivelDeMuerte :: Int
 }
 
+zombieBase = UnZombie {
+ nombre = "Zombie",
+ accesorios = [],
+ danioPorMordida = 1,
+ nivelDeMuerte = saberNivelDeMuerte zombieBase 
+}
+
+balloonZombie = UnZombie {
+ nombre = "Pepe Colgado",
+ accesorios = ["Globo"],
+ danioPorMordida = 1,
+ nivelDeMuerte = saberNivelDeMuerte balloonZombie
+}
+
+newspaperZombie = UnZombie {
+ nombre = "Beto el chismoso",
+ accesorios = ["Diario"],
+ danioPorMordida = 2,
+ nivelDeMuerte = saberNivelDeMuerte newspaperZombie
+}
+
+gargantuar = UnZombie {
+ nombre = "Gargantuar Hulk Smash Puny God",
+ accesorios = ["Poste","Enano"],
+ danioPorMordida = 30,
+ nivelDeMuerte = saberNivelDeMuerte gargantuar
+}
+
+saberNivelDeMuerte :: Zombie -> Int
+saberNivelDeMuerte = length.nombre
+
+--2a)
 especialidad :: Planta -> String
 especialidad planta
  | (solesProducidos planta) > 0 = "Proveedora"
  | ((*2).poderDeAtaque $ planta) > (ptosDevida planta) = "Atacante" 
- | otherwise = "Defensiva" 
+ | otherwise = "Defensiva"
+--2b)
+esPeligroso :: Zombie -> Bool
+esPeligroso zombie = (length.accesorios $ zombie) > 1 || (nivelDeMuerte zombie) > 10
