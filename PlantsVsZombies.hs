@@ -3,7 +3,7 @@ data Planta = UnaPlanta {
  ptosDevida :: Int,
  solesProducidos :: Int, 
  poderDeAtaque :: Int
-}
+} deriving (Show)
 
 peaShooter = UnaPlanta {
  ptosDevida = 5,
@@ -28,7 +28,7 @@ data Zombie = UnZombie {
  accesorios :: [String],
  danioPorMordida :: Int,
  nivelDeMuerte :: Int
-}
+} deriving (Show)
 
 zombieBase = UnZombie {
  nombre = "Zombie",
@@ -74,7 +74,7 @@ esPeligroso zombie = (length.accesorios $ zombie) > 1 || (nivelDeMuerte zombie) 
 data LineaDeDefensa = UnaLineaDeDefensa {
  plantas :: [Planta],
  zombies :: [Zombie]
-}
+} deriving (Show)
 
 linea1 = LineaDeDefensa {
  plantas = [sunflower, sunflower, sunflower],
@@ -94,4 +94,10 @@ linea4 = LineaDeDefensa {
 }
 
 agregarPlanta :: LineaDeDefensa -> Planta -> LineaDeDefensa
-agregarPlanta linea planta = 
+agregarPlanta linea planta = linea{plantas = agregarAfila planta}
+
+agregarZombie :: LineaDeDefensa -> Zombie -> LineaDeDefensa
+agregarPlanta linea zombie = linea{zombies = agregarAfila zombie}
+
+agregarAfila :: [a] -> a -> [a]
+agregarAfila linea plantaOzombie = linea++[plantaOzombie]
