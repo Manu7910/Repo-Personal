@@ -70,3 +70,28 @@ especialidad planta
 --2b)
 esPeligroso :: Zombie -> Bool
 esPeligroso zombie = (length.accesorios $ zombie) > 1 || (nivelDeMuerte zombie) > 10
+--3a)
+data LineaDeDefensa = UnaLineaDeDefensa {
+ plantas :: [Planta],
+ zombies :: [Zombie]
+}
+
+linea1 = LineaDeDefensa {
+	plantas = [sunflower, sunflower, sunflower],
+	zombies = []
+}
+linea2 = LineaDeDefensa {
+	plantas = [peaShooter, peaShooter, sunflower, nut],
+	zombies = [zombieBase, newspaperZombie]
+}
+linea3 = LineaDeDefensa {
+	plantas = [sunflower, peaShooter],
+	zombies = [gargantuar, zombieBase, zombieBase]
+}
+linea4 = LineaDeDefensa {
+	plantas = [peaShooter],
+	zombies = [zombieBase]
+}
+
+agregarPlanta :: LineaDeDefensa -> Planta -> LineaDeDefensa
+agregarPlanta linea planta = 
