@@ -115,7 +115,6 @@ agregarAfila :: [a] -> a -> [a]
 agregarAfila linea plantaOzombie = linea++[plantaOzombie]
 
 --3b)
-
 estaEnPeligro :: LineaDeDefensa -> Bool
 estaEnPeligro linea = (poderDeAtaqueTotal linea) < (danioPorMordidaTotal linea) || sonTodosPeligrosos linea
 
@@ -127,3 +126,20 @@ danioPorMordidaTotal linea = sum.(map danioPorMordida) $ (zombies linea)
 
 sonTodosPeligrosos :: LineaDeDefensa -> Bool
 sonTodosPeligrosos linea = all esPeligroso (zombies linea) 
+
+--3c)
+necesitaSerDefendida :: LineaDeDefensa -> Bool
+necesitaSerDefendida linea = all ((== "Proveedora").especialidad) (plantas linea)
+
+--3d)
+
+--4)
+distintaEspecialidad :: Planta -> Planta -> Bool
+distintaEspecialidad planta1 planta2 = (especialidad planta1) /= (especialidad planta2)
+
+compararEspecialidad :: [Planta] -> Bool
+compararEspecialidad [] = True
+compararEspecialidad (x:y:ys) = (distintaEspecialidad x y) && (compararEspecialidad ys)
+
+esMixta :: LineaDeDefensa -> Bool
+esMixta linea = compararEspecialidad (plantas linea)
