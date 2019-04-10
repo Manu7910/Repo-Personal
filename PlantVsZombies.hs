@@ -143,3 +143,11 @@ compararEspecialidad (x:y:ys) = (distintaEspecialidad x y) && (compararEspeciali
 
 esMixta :: LineaDeDefensa -> Bool
 esMixta linea = compararEspecialidad (plantas linea)
+
+--5a)
+ataqueDePlanta :: Planta -> Zombie -> Zombie
+ataqueDePlanta planta zombie = zombie{nombre = (drop (poderDeAtaque planta)).nombre $ zombie } 
+
+--5b)
+ataqueDeZombie :: Zombie -> Planta -> Planta
+ataqueDeZombie zombie planta = planta{ptosDevida = (ptosDevida planta) - (danioPorMordida zombie) }
