@@ -139,6 +139,7 @@ distintaEspecialidad planta1 planta2 = (especialidad planta1) /= (especialidad p
 
 compararEspecialidad :: [Planta] -> Bool
 compararEspecialidad [] = True
+compararEspecialidad [x] = False
 compararEspecialidad (x:y:ys) = (distintaEspecialidad x y) && (compararEspecialidad ys)
 
 esMixta :: LineaDeDefensa -> Bool
